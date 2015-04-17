@@ -1,0 +1,33 @@
+#################
+# ELASTIC
+#################
+QRY: '{"query":{"match_all":{}}}'
+HOST: ["localhost:9200"]
+PAGE_SIZE: 500
+INDEX: "my_index"
+DOC_TYPE: "doc"
+SCROLL_TIME: "5m"
+
+#################
+# OUTPUT
+#################
+
+OUTPUT:
+  DELIM: "\t"
+  FILE: "my_output.tab"
+  INCLUDE_ID: true
+  COLS:
+    NAME: "person.name"
+    DOG_NAME: "dog.name"
+    HOUSE_NUMBER: "house.number"
+    HOUSE_AGE: "house.age"
+    BIRTH_DATE: "person.birth_date"
+  TRANSFORM:
+    BIRTH_DATE: "$inputData.gsub('-','')"
+
+#################
+# LOGGING
+#################
+
+LOG_FILE: "copy_log.log"
+LOG_LEVEL: "DEBUG" #INFO OR DEBUG ONLY

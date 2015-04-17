@@ -1,0 +1,6 @@
+*.yml
+.buildpath
+.project
+*.log
+Gemfile.lock
+*.sh
